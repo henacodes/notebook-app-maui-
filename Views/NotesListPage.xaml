@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="Notebook.Views.NotesListPage"
+             xmlns:viewmodel="clr-namespace:Notebook.ViewModels"
+             x:DataType="viewmodel:NotesListViewModel"
+             xmlns:model="clr-namespace:Notebook.Models"
+             Title="NotesListPage">
+    <ScrollView  Padding="15">
+        <ScrollView.Background>
+            <LinearGradientBrush EndPoint="0,1">
+                <GradientStop Color="{StaticResource PrimaryColor }"
+                          Offset="0.1" />
+                <GradientStop Color="{StaticResource PrimaryDarker}"
+                          Offset="1.0" />
+            </LinearGradientBrush>
+        </ScrollView.Background>
+        
+        <ScrollView>
+            <CollectionView ItemsSource="{Binding Notes}" >
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="model:Note" >
+                        <StackLayout Margin="10" >
+
+                            <Frame BorderColor="Transparent" CornerRadius="15" >
+
+                                <StackLayout Spacing="10">
+                                    <Label TextColor="{StaticResource SecondaryColor}" FontAttributes="Bold" FontSize="20" Margin="3"    Text="{Binding Title}" />
+                                    <Line Stroke="Gray" X2="400" />
+                                    <Label TextColor="{StaticResource Gray500}" Margin="10" Text="{Binding Content}"  />
+                                    <Line Stroke="Gray" X2="400"   />
+                                    <Label  Text="{Binding DateCreated}" HorizontalOptions="End"  TextColor="{StaticResource Gray400}"  />
+                                </StackLayout>
+
+                            </Frame>
+                        </StackLayout>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
+       
+
+
+    </ScrollView>
+</ContentPage>
