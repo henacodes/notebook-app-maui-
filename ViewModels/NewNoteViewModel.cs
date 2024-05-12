@@ -22,7 +22,7 @@ public partial class NewNoteViewModel:ObservableObject
             await Application.Current.MainPage.DisplayAlert("Invalid input", "Please fill out all the input fields", "Ok");
             return;
         }
-        WeakReferenceMessenger.Default.Send(new AddNoteMessage(new Note() { Title = title, Content = content }));
+        WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note=new Note () { Title = title, Content = content }, Task="add" }));
         await Shell.Current.GoToAsync("..");
     }
 

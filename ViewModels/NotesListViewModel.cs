@@ -47,11 +47,14 @@ public partial class NotesListViewModel:ObservableObject
                                         
                                         };
 
-        WeakReferenceMessenger.Default.Register<AddNoteMessage>(this, (receiver, message) =>
+        WeakReferenceMessenger.Default.Register<NoteMessage>(this, (receiver, message) =>
         {
             MainThread.BeginInvokeOnMainThread(() =>
             {
-                Notes.Add(message.Value);
+                if (message.Value.Task == "add" )
+                {
+                    Notes.Add(message.Value.Note);
+                }
             });
         });
     }
@@ -61,6 +64,14 @@ public partial class NotesListViewModel:ObservableObject
     {
         await Shell.Current.GoToAsync(nameof(NewNotePage));
         //await Application.Current.MainPage.DisplayAlert("Alert", "You have been alerted", "OK");
+    }
+
+
+    [RelayCommand]
+    async Task DeleteNote(int noteId)
+    {
+        await Application.Current.MainPage.DisplayAlert("Alert", $"You have been alerted {noteId}", "OK");
+        //WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note = new Note() { Title = title, Content = content }, Task = "add" }));
     }
 }
 

@@ -27,11 +27,23 @@
                             <Frame BorderColor="Transparent" CornerRadius="15" >
 
                                 <StackLayout Spacing="10">
-                                    <Label TextColor="{StaticResource SecondaryColor}" FontAttributes="Bold"  FontSize="20" Margin="3"    Text="{Binding Title}" />
+                                    <VerticalStackLayout Margin="10"  >
+                                        <Label VerticalOptions="Center" TextColor="{StaticResource SecondaryColor}" FontAttributes="Bold"  FontSize="20" Margin="3"    Text="{Binding Title}" />
+                                        <Label  Text="{Binding DateCreated}"   TextColor="{StaticResource Gray400}"  />
+                                    </VerticalStackLayout>
                                     <Line Stroke="Gray" X2="400" />
                                     <Label TextColor="{StaticResource Gray500}" Margin="10" Text="{Binding Content}"  />
-                                    <Line Stroke="Gray" X2="400"   />
-                                    <Label  Text="{Binding DateCreated}" HorizontalOptions="End"  TextColor="{StaticResource Gray400}"  />
+
+                                    <FlexLayout Direction="Row" >
+                                        <Button Text="Edit"  BackgroundColor="{StaticResource PrimaryColor}" FontAttributes="Bold"  FlexLayout.Grow="1" Margin="5"  />
+                                        <Button Text="Delete"   Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodel:NotesListViewModel}}, Path=DeleteNoteCommand}" CommandParameter="{Binding Id}"   BackgroundColor="PaleVioletRed" FlexLayout.Grow="1" Margin="5"  FontAttributes="Bold" />
+                                    </FlexLayout>
+
+
+
+
+
+
                                 </StackLayout>
 
                             </Frame>
