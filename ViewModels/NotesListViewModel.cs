@@ -1,7 +1,9 @@
 ﻿
 using System.Collections.ObjectModel;
 using CommunityToolkit.Mvvm.ComponentModel;
+using CommunityToolkit.Mvvm.Input;
 using Notebook.Models;
+using Notebook.Views;
 
 namespace Notebook.ViewModels;
 
@@ -39,7 +41,16 @@ public partial class NotesListViewModel:ObservableObject
         Title = "Recipe Ideas",
         Content = "I've been exploring some new recipes recently. One idea is to try a Mediterranean-inspired salad with fresh vegetables, feta cheese, and a tangy vinaigrette dressing. Another recipe I'm considering is a spicy Thai curry with coconut milk, vegetables, and tofu. I'm excited to experiment with these dishes and discover new flavors."
     }
+
+
 };
+    }
+
+    [RelayCommand]
+      async Task   GoToAddNotePage()
+    {
+        await Shell.Current.GoToAsync(nameof(NewNotePage));
+        //await Application.Current.MainPage.DisplayAlert("Alert", "You have been alerted", "OK");
     }
 }
 

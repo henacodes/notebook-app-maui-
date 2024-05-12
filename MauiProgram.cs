@@ -20,6 +20,11 @@ namespace Notebook
             builder.Services.AddSingleton<NotesListPage>();
             builder.Services.AddSingleton<NotesListViewModel>();
 
+            builder.Services.AddTransient<NewNotePage>();
+            builder.Services.AddTransient<NewNoteViewModel>();
+
+
+
 
 #if DEBUG
     		builder.Logging.AddDebug();

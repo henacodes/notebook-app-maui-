@@ -15,8 +15,10 @@
                           Offset="1.0" />
             </LinearGradientBrush>
         </ScrollView.Background>
-        
-        <ScrollView>
+
+        <StackLayout>
+
+            <Button Command="{Binding GoToAddNotePageCommand}"  Text="Add Note" HorizontalOptions="Start"  Margin="10" BackgroundColor="{StaticResource SecondaryColor}" TextColor="White"    />
             <CollectionView ItemsSource="{Binding Notes}" >
                 <CollectionView.ItemTemplate>
                     <DataTemplate x:DataType="model:Note" >
@@ -25,7 +27,7 @@
                             <Frame BorderColor="Transparent" CornerRadius="15" >
 
                                 <StackLayout Spacing="10">
-                                    <Label TextColor="{StaticResource SecondaryColor}" FontAttributes="Bold" FontSize="20" Margin="3"    Text="{Binding Title}" />
+                                    <Label TextColor="{StaticResource SecondaryColor}" FontAttributes="Bold"  FontSize="20" Margin="3"    Text="{Binding Title}" />
                                     <Line Stroke="Gray" X2="400" />
                                     <Label TextColor="{StaticResource Gray500}" Margin="10" Text="{Binding Content}"  />
                                     <Line Stroke="Gray" X2="400"   />
@@ -37,8 +39,9 @@
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
-        </ScrollView>
-       
+        </StackLayout>
+
+
 
 
     </ScrollView>

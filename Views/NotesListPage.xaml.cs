@@ -9,5 +9,8 @@ public partial class NotesListPage : ContentPage
 		InitializeComponent();
 
 		BindingContext = vm;
+		
 	}
+
+ 
 }
