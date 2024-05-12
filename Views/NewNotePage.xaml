@@ -17,12 +17,12 @@
        
 
         <Frame Padding="5" CornerRadius="10" BorderColor="Transparent"    >
-            <Entry Placeholder="Note title" Text="{Binding Title }"       />
+            <Entry Placeholder="Note title" Text="{Binding Title }" TextColor="{StaticResource SecondaryColor}"        />
         </Frame>
         <Frame Padding="5" CornerRadius="10" BorderColor="Transparent"  >
-            <Entry Placeholder="Note title"      Text="{Binding Content }"    />
+            <Entry Placeholder="Note title"      Text="{Binding Content }"  TextColor="{StaticResource SecondaryColor}"   />
         </Frame>
-        <Button  Text="Create" BackgroundColor="{StaticResource SecondaryColor }" TextColor="White"   />
+        <Button  Text="Create" Command="{Binding AddNoteCommand}"  BackgroundColor="{StaticResource SecondaryColor }" TextColor="White"   />
 
 
 
