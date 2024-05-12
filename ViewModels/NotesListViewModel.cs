@@ -54,6 +54,9 @@ public partial class NotesListViewModel:ObservableObject
                 if (message.Value.Task == "add" )
                 {
                     Notes.Add(message.Value.Note);
+                } else if (message.Value.Task == "delete")
+                {
+                    Notes.Remove(message.Value.Note);
                 }
             });
         });
@@ -68,10 +71,11 @@ public partial class NotesListViewModel:ObservableObject
 
 
     [RelayCommand]
-    async Task DeleteNote(int noteId)
+    void DeleteNote(int noteId)
     {
-        await Application.Current.MainPage.DisplayAlert("Alert", $"You have been alerted {noteId}", "OK");
-        //WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note = new Note() { Title = title, Content = content }, Task = "add" }));
+      
+        
+        WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note = Notes.FirstOrDefault(note => note.Id == noteId), Task = "delete" }));
     }
 }
 
