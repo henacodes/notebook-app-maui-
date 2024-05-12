@@ -7,6 +7,7 @@ using Notebook.Messages;
 using Notebook.Models;
 using Notebook.Views;
 
+
 namespace Notebook.ViewModels;
 
 public partial class NotesListViewModel:ObservableObject
@@ -57,6 +58,11 @@ public partial class NotesListViewModel:ObservableObject
                 } else if (message.Value.Task == "delete")
                 {
                     Notes.Remove(message.Value.Note);
+                } else if (message.Value.Task == "update")
+                {
+                   
+
+                    Notes = message.Value.Notes;
                 }
             });
         });
@@ -76,6 +82,20 @@ public partial class NotesListViewModel:ObservableObject
       
         
         WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note = Notes.FirstOrDefault(note => note.Id == noteId), Task = "delete" }));
+    }
+
+
+    [RelayCommand]
+    async Task EditNote(int noteId)
+    {
+        var selectedNote = Notes.FirstOrDefault(note => note.Id == noteId);// Title={selectedNote.Title}&Content={selectedNote.Content}")
+
+        var navigationParameter = new Dictionary<string, object> { { "notes", Notes }, { "note", selectedNote} };
+        await Shell.Current.GoToAsync(nameof(EditNotePage), navigationParameter );
+        //await Application.Current.MainPage.DisplayAlert("POIPOP", $"YOUR ID {selectedNote.Content} ", "Ok");
+
+        //WeakReferenceMessenger.Default.Send(new NoteMessage(new NoteMessageModel() { Note = Notes.FirstOrDefault(note => note.Id == noteId), Task = "edit" }));
+
     }
 }
 

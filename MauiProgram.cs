@@ -17,11 +17,14 @@ namespace Notebook
                     fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
                 });
 
-            builder.Services.AddSingleton<NotesListPage>();
-            builder.Services.AddSingleton<NotesListViewModel>();
+            builder.Services.AddTransient<NotesListPage>();
+            builder.Services.AddTransient<NotesListViewModel>();
 
             builder.Services.AddTransient<NewNotePage>();
             builder.Services.AddTransient<NewNoteViewModel>();
+
+            builder.Services.AddTransient<EditNotePage>();
+            builder.Services.AddTransient<EditNotePageViewMode>();
 
 
 
